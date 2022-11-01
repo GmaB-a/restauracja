@@ -20,5 +20,7 @@ public class CustomerManager : MonoBehaviour
         GameObject customer = Instantiate(customerPrefab, canvas.transform);
         customer.transform.SetSiblingIndex(1);
         customer.GetComponent<CustomerScript>().dialogue = dialogue;
+        Sprite newCustomerSprite = customersSprites[Random.Range(0, customersSprites.Length)];
+        customer.GetComponent<CustomerScript>().ChangeSprite(newCustomerSprite);
     }
 }

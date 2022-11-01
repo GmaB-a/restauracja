@@ -11,4 +11,9 @@ public class CustomerScript : MonoBehaviour
     {
         if (!gameObject.GetComponent<Animation>().IsPlaying(spawnAnim.name)) dialogue.gameObject.SetActive(true);
     }
+
+    public void ChangeSprite(Sprite customerSprite)
+    {
+        gameObject.GetComponent<Image>().sprite = customerSprite;
+    }
 }
