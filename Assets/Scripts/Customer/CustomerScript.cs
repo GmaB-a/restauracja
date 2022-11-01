@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class CustomerScript : MonoBehaviour
 {
-    [SerializeField] private Image dialogue;
+    public Image dialogue;
     [SerializeField] private AnimationClip spawnAnim;
     void Update()
     {

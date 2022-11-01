@@ -128,4 +128,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a701e2d99b24e7429bba93d53306eb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dialogue: {fileID: 0}
+  dialogue: {fileID: 0}
+  spawnAnim: {fileID: 7400000, guid: 2dc9a71be837c6a45b1a1efbc4526f39, type: 2}
