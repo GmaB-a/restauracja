@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19e6f5f82f1263b4f967197f2b43d03c, type: 3}
   m_Name: TCSP
   m_EditorClassIdentifier: 
-  BurgerSprite: {fileID: 0}
+  BurgerSprite: {fileID: 21300000, guid: 207ce08a859c6a84794d771ad5d555d0, type: 3}
   HasOnion: 0
-  HasTomato: 0
-  HasCheese: 0
-  HasSalad: 0
-  HasPatty: 0
+  HasTomato: 1
+  HasCheese: 1
+  HasSalad: 1
+  HasPatty: 1
