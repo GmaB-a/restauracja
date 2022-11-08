@@ -1,0 +1,5 @@
+O = onion
+T = tomato
+C = cheese
+S = salad
+P = patty
