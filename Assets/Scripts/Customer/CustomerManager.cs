@@ -7,9 +7,12 @@ public class CustomerManager : MonoBehaviour
 {
     [SerializeField] private GameObject customerPrefab;
     [SerializeField] private GameObject canvas;
-    [SerializeField] private Image dialogue;
+    [SerializeField] private GameObject dialogue;
+    [SerializeField] private Image BurgerImage;
     [SerializeField] private Sprite[] customersSprites;
+    [SerializeField] private GameObject dialogueManager;
     //public bool NeedSpawnNewCustomer = false;
+    private BurgerScriptableObjects burgerWanted;
     void Start()
     {
         SpawnCustomer();
@@ -19,8 +22,11 @@ public class CustomerManager : MonoBehaviour
     {
         GameObject customer = Instantiate(customerPrefab, canvas.transform);
         customer.transform.SetSiblingIndex(1);
-        customer.GetComponent<CustomerScript>().dialogue = dialogue;
         Sprite newCustomerSprite = customersSprites[Random.Range(0, customersSprites.Length)];
         customer.GetComponent<CustomerScript>().ChangeSprite(newCustomerSprite);
+        burgerWanted = dialogueManager.GetComponent<Dialogue>().ChooseBurger();
+        BurgerImage.sprite = burgerWanted.BurgerSprite;
+        customer.GetComponent<CustomerScript>().BurgerWanted = burgerWanted;
+        customer.GetComponent<CustomerScript>().Dialogue = dialogue;
     }
 }

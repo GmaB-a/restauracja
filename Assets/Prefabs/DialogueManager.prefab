@@ -1,0 +1,81 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &7047930866630313383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6581131707689784621}
+  - component: {fileID: 7170343034459054805}
+  m_Layer: 0
+  m_Name: DialogueManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6581131707689784621
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047930866630313383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 765.2142, y: 835.1917, z: 986.9516}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7170343034459054805
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7047930866630313383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a328f4ac5bd2ec44b91fc4978a4e4dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OneIngridientBurgers:
+  - {fileID: 11400000, guid: 9757fd8bd5b5208489dbdbfce281942c, type: 2}
+  - {fileID: 11400000, guid: cce3a6c5d685f7c45aabc8aa49b62b1a, type: 2}
+  - {fileID: 11400000, guid: 236e7f4187a1f29499dbd1c62ac30ca2, type: 2}
+  - {fileID: 11400000, guid: 4361749a3816a2948849321e7f40f5b6, type: 2}
+  - {fileID: 11400000, guid: b6f72085b0a2c1e4a95e91ba880bea83, type: 2}
+  TwoIngridientBurgers:
+  - {fileID: 11400000, guid: 39574d4bd91a41747b1f85c76a9cd68a, type: 2}
+  - {fileID: 11400000, guid: f45d776063c2cc848a9e7dbbf06c084b, type: 2}
+  - {fileID: 11400000, guid: ed45f38003a5b084cae8b286c0ec44df, type: 2}
+  - {fileID: 11400000, guid: add07114d0737ea4eb59a388bda9f274, type: 2}
+  - {fileID: 11400000, guid: 144d0f7b8ca086542b021d460058ecd7, type: 2}
+  - {fileID: 11400000, guid: fc4cd296c2dda984ea65288bb914d17e, type: 2}
+  - {fileID: 11400000, guid: 833e0d595d56bc1438ddaf05c939ac1a, type: 2}
+  - {fileID: 11400000, guid: 7eeb7456438aeb64ab36d5fdcf720e50, type: 2}
+  - {fileID: 11400000, guid: 353f2384e0601c249bfe1597d375e9cc, type: 2}
+  - {fileID: 11400000, guid: e70256e56a2d2bb4daefe324dc2cb192, type: 2}
+  ThreeIngridientBurgers:
+  - {fileID: 11400000, guid: d5be4292f33aede45aec7b2632ada859, type: 2}
+  - {fileID: 11400000, guid: 4a847c7572f912b48ac35ab90a6a3cef, type: 2}
+  - {fileID: 11400000, guid: eb58d38b776c02243be2a0d8a1e68354, type: 2}
+  - {fileID: 11400000, guid: 7a8911d9b1d2acc4681608b629577038, type: 2}
+  - {fileID: 11400000, guid: 895b1013a5f71c34cb13f1a73d281228, type: 2}
+  - {fileID: 11400000, guid: b3dbdb00f1e634942b7a9b377c44ea94, type: 2}
+  - {fileID: 11400000, guid: e194a4373e46c4541b1ece051aae37ad, type: 2}
+  - {fileID: 11400000, guid: f2334245addabcd4e92896a984eff66d, type: 2}
+  - {fileID: 11400000, guid: 24ebd0846579f7f4880b6770f985b98d, type: 2}
+  FourIngridientBurgers:
+  - {fileID: 11400000, guid: 49e005ee736c5184cadb9c3202e8c0b2, type: 2}
+  - {fileID: 11400000, guid: 73ccd5d3426b7ad40b63265108210404, type: 2}
+  - {fileID: 11400000, guid: eefec5f100878f84da1507ea9d9c2b43, type: 2}
+  - {fileID: 11400000, guid: ebf3bc3167afc394790317fe01204f41, type: 2}
+  - {fileID: 11400000, guid: 447c78880bbd73047a361aa7a5a05140, type: 2}
+  FiveIngridientBurgers:
+  - {fileID: 11400000, guid: b7bc0fc3b67abe446885219c169ec8e3, type: 2}

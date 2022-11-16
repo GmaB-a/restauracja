@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class CustomerScript : MonoBehaviour
 {
-    public Image dialogue;
+    public GameObject Dialogue;
     [SerializeField] private AnimationClip spawnAnim;
+    public BurgerScriptableObjects BurgerWanted;
     void Update()
     {
-        if (!gameObject.GetComponent<Animation>().IsPlaying(spawnAnim.name)) dialogue.gameObject.SetActive(true);
+        if (!gameObject.GetComponent<Animation>().IsPlaying(spawnAnim.name)) Dialogue.gameObject.SetActive(true);
     }
 
     public void ChangeSprite(Sprite customerSprite)
