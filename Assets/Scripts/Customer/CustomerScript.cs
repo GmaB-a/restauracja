@@ -7,6 +7,7 @@ public class CustomerScript : MonoBehaviour
 {
     public GameObject Dialogue;
     [SerializeField] private AnimationClip spawnAnim;
+    [SerializeField] private AnimationClip finishAnim;
     public BurgerScriptableObjects BurgerWanted;
     void Update()
     {
