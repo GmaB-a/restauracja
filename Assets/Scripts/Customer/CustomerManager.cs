@@ -5,6 +5,22 @@ using UnityEngine.UI;
 
 public class CustomerManager : MonoBehaviour
 {
+    private static CustomerManager _instance;
+    public static CustomerManager Instance { get { return _instance; } }
+
+
+    private void Awake()
+    {
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+    }
+
     [SerializeField] private GameObject customerPrefab;
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject dialogue;

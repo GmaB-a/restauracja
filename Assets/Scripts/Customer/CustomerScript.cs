@@ -9,13 +9,24 @@ public class CustomerScript : MonoBehaviour
     [SerializeField] private AnimationClip spawnAnim;
     [SerializeField] private AnimationClip finishAnim;
     public BurgerScriptableObjects BurgerWanted;
-    void Update()
+
+    public void StartDialogue()
     {
-        if (!gameObject.GetComponent<Animation>().IsPlaying(spawnAnim.name)) Dialogue.gameObject.SetActive(true);
+        Dialogue.gameObject.SetActive(true);
+    }
+
+    public void EndDialogue()
+    {
+        Dialogue.gameObject.SetActive(false);
     }
 
     public void ChangeSprite(Sprite customerSprite)
     {
         gameObject.GetComponent<Image>().sprite = customerSprite;
+    }
+
+    public void SelfDestroy()
+    {
+        Destroy(this.gameObject);
     }
 }
