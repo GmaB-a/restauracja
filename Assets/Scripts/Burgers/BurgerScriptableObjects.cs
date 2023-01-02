@@ -11,4 +11,5 @@ public class BurgerScriptableObjects : ScriptableObject
     public bool HasCheese;
     public bool HasSalad;
     public bool HasPatty;
+    public bool HasUpperBun;
 }
