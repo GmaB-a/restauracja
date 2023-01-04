@@ -114,13 +114,6 @@ public class BurgerMakingManager : MonoBehaviour
         bool tomato = currentBurger.HasTomato == burgerWanted.HasTomato;
         bool upperBun = currentBurger.HasUpperBun == burgerWanted.HasUpperBun;
 
-        print("Cheese " + cheese);
-        print("Patty " + patty);
-        print("Salad " + salad);
-        print("Onion " + onion);
-        print("Tomato " + tomato);
-        print("Bun " + upperBun);
-
         return cheese && patty && salad && onion && tomato && upperBun;
     }
 
