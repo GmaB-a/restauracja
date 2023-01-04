@@ -8,7 +8,6 @@ public class CustomerScript : MonoBehaviour
     public GameObject Dialogue;
     [SerializeField] private AnimationClip spawnAnim;
     [SerializeField] private AnimationClip finishAnim;
-    public BurgerScriptableObjects BurgerWanted;
 
     public void StartDialogue()
     {
@@ -23,6 +22,11 @@ public class CustomerScript : MonoBehaviour
     public void ChangeSprite(Sprite customerSprite)
     {
         gameObject.GetComponent<Image>().sprite = customerSprite;
+    }
+
+    public void SpawnNextCustomer()
+    {
+        CustomerManager.Instance.SpawnCustomer();
     }
 
     public void SelfDestroy()

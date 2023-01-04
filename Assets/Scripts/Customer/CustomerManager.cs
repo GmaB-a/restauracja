@@ -28,21 +28,27 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private Sprite[] customersSprites;
     [SerializeField] private GameObject dialogueManager;
     //public bool NeedSpawnNewCustomer = false;
-    private BurgerScriptableObjects burgerWanted;
+    public BurgerScriptableObjects burgerWanted;
     void Start()
     {
         SpawnCustomer();
     }
 
-    void SpawnCustomer()
+    private GameObject customer;
+    public void SpawnCustomer()
     {
-        GameObject customer = Instantiate(customerPrefab, canvas.transform);
+        customer = Instantiate(customerPrefab, canvas.transform);
         customer.transform.SetSiblingIndex(1);
         Sprite newCustomerSprite = customersSprites[Random.Range(0, customersSprites.Length)];
         customer.GetComponent<CustomerScript>().ChangeSprite(newCustomerSprite);
         burgerWanted = dialogueManager.GetComponent<Dialogue>().ChooseBurger();
         BurgerImage.sprite = burgerWanted.BurgerSprite;
-        customer.GetComponent<CustomerScript>().BurgerWanted = burgerWanted;
         customer.GetComponent<CustomerScript>().Dialogue = dialogue;
+        customer.GetComponent<Animation>().Play("CustomerSpawnAnim");
+    }
+
+    public void CustomerGoAway()
+    {
+        customer.GetComponent<Animation>().Play("CustomerGoAwayAnim");
     }
 }

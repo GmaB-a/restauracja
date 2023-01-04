@@ -24,12 +24,20 @@ public class BurgerMakingManager : MonoBehaviour
     [SerializeField] private Image addToBurger;
     [SerializeField] private Image trash;
     [SerializeField] private GameObject[] ingridientPositions;
+    private GameObject[] ingridientsInBurger;
+    private int lastPositionOccupied;
 
     public bool IsHoldingAnIngridient;
     public string HoldIngridientName;
     public Image HoldIngridientImage;
 
     public BurgerScriptableObjects currentBurger;
+
+    private void Start()
+    {
+        ingridientsInBurger = new GameObject[ingridientPositions.Length];
+        lastPositionOccupied = 0;
+    }
 
     private void Update()
     {
@@ -72,18 +80,68 @@ public class BurgerMakingManager : MonoBehaviour
                 break;
         }
 
-        for(int i = 0; i < ingridientPositions.Length; i++)
+        if (lastPositionOccupied < ingridientPositions.Length && 
+            !ingridientPositions[lastPositionOccupied].GetComponent<IngridientPositions>().isOccupied)
         {
-            if (!ingridientPositions[i].GetComponent<IngridientPositions>().isOccupied)
-            {
-                HoldIngridientImage.GetComponent<IngridientScript>().HasToFollowCursor = false;
-                HoldIngridientImage.transform.position = ingridientPositions[i].transform.position;
-                ingridientPositions[i].GetComponent<IngridientPositions>().isOccupied = true;
-                IsHoldingAnIngridient = false;
-                HoldIngridientName = "";
-                break;
-            }
+            HoldIngridientImage.GetComponent<IngridientScript>().HasToFollowCursor = false;
+            HoldIngridientImage.transform.position = ingridientPositions[lastPositionOccupied].transform.position;
+            ingridientsInBurger[lastPositionOccupied] = HoldIngridientImage.gameObject;
+            ingridientPositions[lastPositionOccupied].GetComponent<IngridientPositions>().isOccupied = true;
+            lastPositionOccupied += 1;
+            IsHoldingAnIngridient = false;
+            HoldIngridientName = "";
         }
+        else lastPositionOccupied += 1;
+    }
+
+    public void CheckBurgersEquality()
+    {
+        BurgerScriptableObjects burgerWanted = CustomerManager.Instance.burgerWanted;
+        if (HasSameIngridients(burgerWanted))
+        {
+            CustomerManager.Instance.CustomerGoAway();
+        }
+
+        ResetCurrentIngridients();
+    }
+
+    private bool HasSameIngridients(BurgerScriptableObjects burgerWanted)
+    {
+        bool cheese = currentBurger.HasCheese == burgerWanted.HasCheese;
+        bool patty = currentBurger.HasPatty == burgerWanted.HasPatty;
+        bool salad = currentBurger.HasSalad == burgerWanted.HasSalad;
+        bool onion = currentBurger.HasOnion == burgerWanted.HasOnion;
+        bool tomato = currentBurger.HasTomato == burgerWanted.HasTomato;
+        bool upperBun = currentBurger.HasUpperBun == burgerWanted.HasUpperBun;
+
+        print("Cheese " + cheese);
+        print("Patty " + patty);
+        print("Salad " + salad);
+        print("Onion " + onion);
+        print("Tomato " + tomato);
+        print("Bun " + upperBun);
+
+        return cheese && patty && salad && onion && tomato && upperBun;
+    }
+
+    private void ResetCurrentIngridients()
+    {
+        foreach (GameObject ingridient in ingridientsInBurger)
+        {
+            Destroy(ingridient);
+        }
+        foreach (GameObject position in ingridientPositions)
+        {
+            position.GetComponent<IngridientPositions>().isOccupied = false;
+        }
+        lastPositionOccupied = 0;
+
+        currentBurger.HasCheese = false;
+        currentBurger.HasPatty = false;
+        currentBurger.HasSalad = false;
+        currentBurger.HasOnion = false;
+        currentBurger.HasTomato = false;
+        currentBurger.HasUpperBun = false;
     }
 
     private bool CheckUIOverlap(RectTransform rectTransform1, RectTransform rectTransform2)

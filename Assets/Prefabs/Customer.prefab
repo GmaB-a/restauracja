@@ -29,7 +29,7 @@ RectTransform:
   m_GameObject: {fileID: 1509098769741347752}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2.3, y: 2.3, z: 3}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -37,7 +37,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1160, y: 50}
+  m_AnchoredPosition: {x: 1242, y: 50}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1509098769741347756
@@ -90,8 +90,9 @@ Animation:
   m_Animation: {fileID: 7400000, guid: 2dc9a71be837c6a45b1a1efbc4526f39, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 2dc9a71be837c6a45b1a1efbc4526f39, type: 2}
+  - {fileID: 7400000, guid: fa82ee038a6775f41baf9e970cdf7ad0, type: 2}
   m_WrapMode: 0
-  m_PlayAutomatically: 1
+  m_PlayAutomatically: 0
   m_AnimatePhysics: 0
   m_CullingType: 0
 --- !u!114 &8766122698892501938
@@ -108,5 +109,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Dialogue: {fileID: 0}
   spawnAnim: {fileID: 7400000, guid: 2dc9a71be837c6a45b1a1efbc4526f39, type: 2}
-  finishAnim: {fileID: 0}
-  BurgerWanted: {fileID: 0}
+  finishAnim: {fileID: 7400000, guid: fa82ee038a6775f41baf9e970cdf7ad0, type: 2}
