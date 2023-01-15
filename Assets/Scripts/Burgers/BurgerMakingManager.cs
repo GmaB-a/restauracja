@@ -9,7 +9,6 @@ public class BurgerMakingManager : MonoBehaviour
     private static BurgerMakingManager _instance;
     public static BurgerMakingManager Instance { get { return _instance; } }
 
-
     private void Awake()
     {
         if (_instance != null && _instance != this)
@@ -55,7 +54,6 @@ public class BurgerMakingManager : MonoBehaviour
         HoldIngridientName = "";
     }
 
-
     private void AddIngridientToBurger()
     {
         switch (HoldIngridientName)
@@ -100,10 +98,13 @@ public class BurgerMakingManager : MonoBehaviour
         if (HasSameIngridients(burgerWanted))
         {
             CustomerManager.Instance.CustomerGoAway();
+            if (addedPoison) GameManager.Instance.CheckForConcurrency();
         }
 
         ResetCurrentIngridients();
     }
+
+    private bool addedPoison;
 
     private bool HasSameIngridients(BurgerScriptableObjects burgerWanted)
     {
@@ -135,6 +136,7 @@ public class BurgerMakingManager : MonoBehaviour
         currentBurger.HasOnion = false;
         currentBurger.HasTomato = false;
         currentBurger.HasUpperBun = false;
+        addedPoison = false;
     }
 
     private bool CheckUIOverlap(RectTransform rectTransform1, RectTransform rectTransform2)
@@ -148,5 +150,10 @@ public class BurgerMakingManager : MonoBehaviour
 
         if (rec.Overlaps(rec2)) return true;
         return false;
+    }
+
+    public void AddPoison()
+    {
+        addedPoison = true;
     }
 }

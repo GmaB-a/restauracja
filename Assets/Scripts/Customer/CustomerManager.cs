@@ -24,13 +24,29 @@ public class CustomerManager : MonoBehaviour
     [SerializeField] private GameObject customerPrefab;
     [SerializeField] private GameObject canvas;
     [SerializeField] private GameObject dialogue;
+    [SerializeField] private Dialogue dialogueManager;
     [SerializeField] private Image BurgerImage;
+
     [SerializeField] private Sprite[] customersSprites;
-    [SerializeField] private GameObject dialogueManager;
-    //public bool NeedSpawnNewCustomer = false;
+    [SerializeField] private Sprite chinese;
+    [SerializeField] private Sprite spanish;
+    [SerializeField] private Sprite indian;
+
+    public int chineseNum;
+    public int spanishNum;
+    public int indianNum;
+
     public BurgerScriptableObjects burgerWanted;
     void Start()
     {
+        int customerPerGame = GameManager.Instance.customerPerGame;
+
+        chineseNum = Random.Range(1, customerPerGame - 1);
+        spanishNum = Random.Range(1, customerPerGame - 1);
+        while(spanishNum == chineseNum) spanishNum = Random.Range(1, customerPerGame - 1);
+        indianNum = Random.Range(1, customerPerGame - 1);
+        while (indianNum == chineseNum || indianNum == spanishNum) indianNum = Random.Range(1, customerPerGame - 1);
+
         SpawnCustomer();
     }
 
@@ -39,13 +55,25 @@ public class CustomerManager : MonoBehaviour
     {
         customer = Instantiate(customerPrefab, canvas.transform);
         customer.transform.SetSiblingIndex(1);
-        Sprite newCustomerSprite = customersSprites[Random.Range(0, customersSprites.Length)];
+
+        Sprite newCustomerSprite;
+        if (CheckCustomerNumbers(chineseNum)) newCustomerSprite = chinese;
+        else if ((CheckCustomerNumbers(spanishNum))) newCustomerSprite = spanish;
+        else if ((CheckCustomerNumbers(indianNum))) newCustomerSprite = indian;
+        else newCustomerSprite = customersSprites[Random.Range(0, customersSprites.Length)];
         customer.GetComponent<CustomerScript>().ChangeSprite(newCustomerSprite);
-        burgerWanted = dialogueManager.GetComponent<Dialogue>().ChooseBurger();
+
+        burgerWanted = dialogueManager.ChooseBurger();
         BurgerImage.sprite = burgerWanted.BurgerSprite;
+
         customer.GetComponent<CustomerScript>().Dialogue = dialogue;
         customer.GetComponent<Animation>().Play("CustomerSpawnAnim");
+
     }
+
+    public bool CheckCustomerNumbers(int num)
+        => GameManager.Instance.CurrentCustomer == num;
+    
 
     public void CustomerGoAway()
     {

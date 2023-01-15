@@ -26,6 +26,8 @@ public class CustomerScript : MonoBehaviour
 
     public void SpawnNextCustomer()
     {
+        GameManager.Instance.AddCurrentCustomer();
+        if (GameManager.Instance.CurrentCustomer - 1 == GameManager.Instance.customerPerGame) return;
         CustomerManager.Instance.SpawnCustomer();
     }
 

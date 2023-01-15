@@ -12,9 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/GameMap.unity
     guid: 4adc50a0e1b67c04993b2071fdc1a226
   - enabled: 1
-    path: Assets/Scenes/MainGame.unity
-    guid: 543453c2435ad1e4e8d17b020639d9ee
-  - enabled: 1
     path: Assets/Scenes/Intro_SceneAfterClickPlay.unity
     guid: 7fbcd7abf11f64440b60752c4aa3b779
+  - enabled: 1
+    path: Assets/Scenes/MainGame.unity
+    guid: 543453c2435ad1e4e8d17b020639d9ee
   m_configObjects: {}
