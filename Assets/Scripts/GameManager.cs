@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance { get { return _instance; } }
 
+    public AudioSource mainGameMusic;
+    public AudioSource policeAfterFoodTruck;
+    public AudioSource hiszpanDeath;
+
 
     private void Awake()
     {
@@ -61,6 +65,7 @@ public class GameManager : MonoBehaviour
             videoImage.SetActive(true);
             videoPlayer.Play();
             chineseDead = true;
+            mainGameMusic.Stop();
         }
         else if (CustomerManager.Instance.CheckCustomerNumbers(CustomerManager.Instance.spanishNum))
         {
@@ -68,6 +73,8 @@ public class GameManager : MonoBehaviour
             videoImage.SetActive(true);
             videoPlayer.Play();
             spanishDead = true;
+            mainGameMusic.Stop();
+            hiszpanDeath.PlayDelayed(3);
         }
         else if (CustomerManager.Instance.CheckCustomerNumbers(CustomerManager.Instance.indianNum))
         { 
@@ -75,6 +82,7 @@ public class GameManager : MonoBehaviour
             videoImage.SetActive(true);
             videoPlayer.Play();
             indianDead = true;
+            mainGameMusic.Stop();
         }
         else
         {
@@ -85,9 +93,15 @@ public class GameManager : MonoBehaviour
 
     private void EndGame()
     {
-        if(chineseDead && indianDead && spanishDead && !civiliansDead)
+        if (chineseDead && indianDead && spanishDead && !civiliansDead)
             videoPlayer.clip = win;
-        else videoPlayer.clip = gameOver;
+        else 
+        {
+            videoPlayer.clip = gameOver;
+            mainGameMusic.Stop();
+            policeAfterFoodTruck.Play();
+        }
+        
 
         videoImage.SetActive(true);
         videoPlayer.Play();
@@ -97,6 +111,7 @@ public class GameManager : MonoBehaviour
     void EndReached(UnityEngine.Video.VideoPlayer vp)
     {
         videoImage.SetActive(false);
+        mainGameMusic.Play();
     }
 
     IEnumerator WaitTillSceneChange()

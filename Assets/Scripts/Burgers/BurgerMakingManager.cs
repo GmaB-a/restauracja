@@ -6,6 +6,10 @@ using UnityEngine.UI;
 
 public class BurgerMakingManager : MonoBehaviour
 {
+
+    public AudioSource goodBurger;
+    public AudioSource badBurger;
+
     private static BurgerMakingManager _instance;
     public static BurgerMakingManager Instance { get { return _instance; } }
 
@@ -98,10 +102,24 @@ public class BurgerMakingManager : MonoBehaviour
         if (HasSameIngridients(burgerWanted))
         {
             CustomerManager.Instance.CustomerGoAway();
-            if (addedPoison) GameManager.Instance.CheckForConcurrency();
+            goodBurger.Play();
+
+            //if (addedPoison) GameManager.Instance.CheckForConcurrency();
+
+            if (addedPoison)
+            {
+                GameManager.Instance.CheckForConcurrency();
+            }
+        }
+        else
+        {
+            badBurger.Play();
         }
 
-        ResetCurrentIngridients();
+            ResetCurrentIngridients();
+        
+        
+        
     }
 
     private bool addedPoison;
