@@ -11,8 +11,9 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get { return _instance; } }
 
     public AudioSource mainGameMusic;
-    public AudioSource policeAfterFoodTruck;
-    public AudioSource hiszpanDeath;
+    public AudioSource gameOverAudio;
+    public AudioSource spanishDeathAudio;
+    public AudioSource indianDeathAudio;
 
 
     private void Awake()
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private VideoPlayer videoPlayer;
     [SerializeField] private GameObject videoImage;
+    [SerializeField] private GameObject skipGameOverButton;
 
     [SerializeField] private VideoClip chineseDeath;
     [SerializeField] private VideoClip spanishDeath;
@@ -74,7 +76,7 @@ public class GameManager : MonoBehaviour
             videoPlayer.Play();
             spanishDead = true;
             mainGameMusic.Stop();
-            hiszpanDeath.PlayDelayed(3);
+            spanishDeathAudio.PlayDelayed(3);
         }
         else if (CustomerManager.Instance.CheckCustomerNumbers(CustomerManager.Instance.indianNum))
         { 
@@ -83,6 +85,7 @@ public class GameManager : MonoBehaviour
             videoPlayer.Play();
             indianDead = true;
             mainGameMusic.Stop();
+            indianDeathAudio.Play();
         }
         else
         {
@@ -99,7 +102,8 @@ public class GameManager : MonoBehaviour
         {
             videoPlayer.clip = gameOver;
             mainGameMusic.Stop();
-            policeAfterFoodTruck.Play();
+            gameOverAudio.Play();
+            skipGameOverButton.SetActive(true);
         }
         
 
@@ -112,6 +116,7 @@ public class GameManager : MonoBehaviour
     {
         videoImage.SetActive(false);
         mainGameMusic.Play();
+        skipGameOverButton.SetActive(false);
     }
 
     IEnumerator WaitTillSceneChange()
